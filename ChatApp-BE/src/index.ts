@@ -20,7 +20,7 @@ wss.on("connection", (socket) => {
         username: parsedMessage.payload.username,
       });
 
-      // Notify all users in the room about the new user
+
       const usersInRoom = allSockets.filter(
         (user) => user.room === parsedMessage.payload.roomId
       );
@@ -76,7 +76,7 @@ wss.on("connection", (socket) => {
           (u) => u.room === user.room && u.socket !== socket
         );
 
-        // Notify other users in the room about user leaving
+
         usersInRoom.forEach((u) => {
           u.socket.send(
             JSON.stringify({
